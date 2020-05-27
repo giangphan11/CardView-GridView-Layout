@@ -1,0 +1,2 @@
+rootProject.name='CardView GridLayout'
+include ':app'
