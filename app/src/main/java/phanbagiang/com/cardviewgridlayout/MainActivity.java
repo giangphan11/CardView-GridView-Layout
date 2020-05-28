@@ -1,10 +1,14 @@
 package phanbagiang.com.cardviewgridlayout;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -16,6 +20,9 @@ public class MainActivity extends AppCompatActivity {
     BookAdapter bookAdapter;
     ArrayList<Book>dsBook;
 
+    DrawerLayout drawerLayout;
+    ActionBarDrawerToggle drawerToggle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +32,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addControls() {
+        drawerLayout=findViewById(R.id.drawer);
+        drawerToggle=new ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.close);
+        drawerLayout.addDrawerListener(drawerToggle);
+        drawerToggle.syncState();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         recBook=findViewById(R.id.recAnime);
         bookAdapter=new BookAdapter(this,dsBook);
         recBook.setHasFixedSize(true);
@@ -32,6 +46,16 @@ public class MainActivity extends AppCompatActivity {
         //RecyclerView.LayoutManager layoutManager=new GridLayoutManager(this,3);
 
         recBook.setLayoutManager(new GridLayoutManager(this,3));
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(drawerToggle.onOptionsItemSelected(item))
+            return true;
+        if(item.getItemId()==R.id.mnuAbout){
+            Toast.makeText(this,"OK",Toast.LENGTH_SHORT).show();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void fakeData() {
