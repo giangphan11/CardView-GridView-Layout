@@ -6,23 +6,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="false"
+    tools:openDrawer="start"
     tools:context=".MainActivity">
-    <LinearLayout
+    <FrameLayout
+        android:id="@+id/myFrameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recAnime"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-    </LinearLayout>
+    </FrameLayout>
     <com.google.android.material.navigation.NavigationView
+        android:id="@+id/myNavigationview"
         android:layout_width="wrap_content"
         app:headerLayout="@layout/header"
         android:background="@color/colorWhite"
-        app:menu="@menu/drawer_item"
-        app:itemIconTint="@color/colorPrimary"
         android:layout_gravity="start"
-        app:itemTextColor="@color/colorBlack"
+        app:itemIconTint="@color/drawer_item"
+        app:itemBackground="@android:color/transparent"
+        app:itemTextColor="@color/drawer_item"
+        app:menu="@menu/drawer_item"
         android:layout_height="match_parent">
 
     </com.google.android.material.navigation.NavigationView>

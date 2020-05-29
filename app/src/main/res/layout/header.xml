@@ -4,18 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/gradian"
     android:layout_height="160dp">
 
-    <ImageView
-        android:scaleType="centerCrop"
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/img5" />
+
 
     <ImageView
         android:id="@+id/imageView2"
@@ -35,7 +27,7 @@
         android:layout_marginTop="4dp"
         android:fontFamily="sans-serif-condensed"
         android:text="Giang Phan"
-        android:textColor="#FFEB3B"
+        android:textColor="#EFD916"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
