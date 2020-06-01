@@ -3,6 +3,7 @@ package phanbagiang.com.cardviewgridlayout;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -33,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
     FragmentManager fragmentManager=null;
     FragmentTransaction fragmentTransaction=null;
 
+    Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,29 +50,38 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 xuLyItem(menuItem);
-                return false;
+                return true;
             }
         });
     }
     private void xuLyItem(MenuItem menuItem){
         fragmentManager=getSupportFragmentManager();
         fragmentTransaction=fragmentManager.beginTransaction();
-        Fragment fragment=null;
+        Fragment myFragment=null;
+        Class fragmentClass=null;
         switch (menuItem.getItemId()){
             case R.id.mnuAbout:
-                fragment=new FragmentAbout();
+                fragmentClass=FragmentAbout.class;
                 break;
             case R.id.mnuHelp:
-                fragment=new FragmentHelp();
+                fragmentClass=FragmentHelp.class;
                 break;
             default:
                 return;
         }
-        fragmentTransaction.replace(R.id.myFrameLayout,fragment).commit();
+        try {
+            myFragment = (Fragment) fragmentClass.newInstance();
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
+        fragmentTransaction.replace(R.id.myFrameLayout,myFragment).commit();
         drawerLayout.closeDrawers();
     }
 
     private void addControls() {
+        toolbar=findViewById(R.id.myToolbar);
+        setSupportActionBar(toolbar);
         drawerLayout=findViewById(R.id.drawer);
         drawerToggle=new ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.close);
         drawerLayout.addDrawerListener(drawerToggle);

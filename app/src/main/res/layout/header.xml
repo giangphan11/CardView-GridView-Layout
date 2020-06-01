@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="@drawable/gradian"
-    android:layout_height="160dp">
+    android:layout_height="190dp">
 
 
 
@@ -14,7 +14,7 @@
         android:layout_width="74dp"
         android:layout_height="74dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="50dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/av" />
